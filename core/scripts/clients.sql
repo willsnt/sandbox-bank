@@ -1,0 +1,20 @@
+CREATE TABLE clients (
+    client_id BIGSERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    gender VARCHAR(6) NOT NULL,
+    birth_date DATE NOT NULL,
+    marital_status VARCHAR(8) NOT NULL,
+    document_number VARCHAR(20) UNIQUE NOT NULL,
+    phone_number VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    address_line1 VARCHAR(255) NOT NULL,
+    address_line2 VARCHAR(255),
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20) NOT NULL,
+    occupation VARCHAR(100) NOT NULL,
+    monthly_income NUMERIC(15, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP
+);

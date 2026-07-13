@@ -14,7 +14,7 @@ import java.util.Locale;
 public class Account {
 
     private Long accountID;
-    private int accountNumber;
+    private Long accountNumber;
     private AccountType type;
     private AccountStatus status;
     private String pinHash;
@@ -35,7 +35,7 @@ public class Account {
     }
 
 
-    public Account(Long accountID, int accountNumber, AccountType type, AccountStatus status, String pinHash, MonetaryAmount balance, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Account(Long accountID, Long accountNumber, AccountType type, AccountStatus status, String pinHash, MonetaryAmount balance, LocalDateTime createdAt, LocalDateTime updatedAt) {
 
         this.accountID = accountID;
         this.accountNumber = accountNumber;
@@ -57,12 +57,12 @@ public class Account {
         this.accountID = accountID;
     }
 
-    public int getAccountNumber() {
+    public Long getAccountNumber() {
 
         return accountNumber;
     }
 
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(Long accountNumber) {
 
         this.accountNumber = accountNumber;
     }
