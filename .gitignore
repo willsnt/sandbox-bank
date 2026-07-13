@@ -19,7 +19,7 @@ mvnw.cmd
 *.log
 
 ### Security ###
-.env
+*.env
 
 ### Eclipse ###
 .apt_generated
@@ -45,3 +45,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Core Tests ###
+core/src/test/
