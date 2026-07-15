@@ -124,19 +124,9 @@ public class Client {
         return clientID;
     }
 
-    public void setClientID(int clientID) {
-
-        this.clientID = clientID;
-    }
-
     public String getFirstName() {
 
         return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-
-        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -144,19 +134,9 @@ public class Client {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-
-        this.lastName = lastName;
-    }
-
     public Gender getGender() {
 
         return gender;
-    }
-
-    public void setGender(Gender gender) {
-
-        this.gender = gender;
     }
 
     public LocalDate getBirthDate() {
@@ -164,19 +144,9 @@ public class Client {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-
-        this.birthDate = birthDate;
-    }
-
     public MaritalStatus getMaritalStatus() {
 
         return maritalStatus;
-    }
-
-    public void setMaritalStatus(MaritalStatus maritalStatus) {
-
-        this.maritalStatus = maritalStatus;
     }
 
     public String getDocumentNumber() {
@@ -184,19 +154,9 @@ public class Client {
         return documentNumber;
     }
 
-    public void setDocumentNumber(String documentNumber) {
-
-        this.documentNumber = documentNumber;
-    }
-
     public String getPhoneNumber() {
 
         return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-
-        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -204,19 +164,9 @@ public class Client {
         return email;
     }
 
-    public void setEmail(String email) {
-
-        this.email = email;
-    }
-
     public String getAddressLine1() {
 
         return addressLine1;
-    }
-
-    public void setAddressLine1(String addressLine1) {
-
-        this.addressLine1 = addressLine1;
     }
 
     public String getAddressLine2() {
@@ -224,19 +174,9 @@ public class Client {
         return addressLine2;
     }
 
-    public void setAddressLine2(String addressLine2) {
-
-        this.addressLine2 = addressLine2;
-    }
-
     public String getCity() {
 
         return city;
-    }
-
-    public void setCity(String city) {
-
-        this.city = city;
     }
 
     public String getState() {
@@ -244,19 +184,9 @@ public class Client {
         return state;
     }
 
-    public void setState(String state) {
-
-        this.state = state;
-    }
-
     public String getPostalCode() {
 
         return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-
-        this.postalCode = postalCode;
     }
 
     public String getOccupation() {
@@ -264,19 +194,9 @@ public class Client {
         return occupation;
     }
 
-    public void setOccupation(String occupation) {
-
-        this.occupation = occupation;
-    }
-
     public MonetaryAmount getMonthlyIncome() {
 
         return monthlyIncome;
-    }
-
-    public void setMonthlyIncome(MonetaryAmount monthlyIncome) {
-
-        this.monthlyIncome = monthlyIncome;
     }
 
     public String getFormattedMonthlyIncome() {
@@ -295,19 +215,9 @@ public class Client {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-
-        this.createdAt = createdAt;
-    }
-
     public LocalDateTime getUpdatedAt() {
 
         return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-
-        this.updatedAt = updatedAt;
     }
 
     public Account getAccount() {
@@ -315,18 +225,8 @@ public class Client {
         return account;
     }
 
-    public void setAccount(Account account) {
-
-        this.account = account;
-    }
-
     public User getUser() {
 
         return user;
-    }
-
-    public void setUser(User user) {
-
-        this.user = user;
     }
 }
