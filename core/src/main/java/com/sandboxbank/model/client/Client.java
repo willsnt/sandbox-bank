@@ -38,83 +38,170 @@ public class Client {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    private Account account;
-    private User user;
+    private Client(Builder builder) {
 
-    public Client(String firstName,
-                  String lastName,
-                  Gender gender,
-                  LocalDate birthdate,
-                  MaritalStatus maritalStatus,
-                  String documentNumber,
-                  String phoneNumber,
-                  String email,
-                  String addressLine1,
-                  String addressLine2,
-                  String city,
-                  String state,
-                  String postalCode,
-                  String occupation,
-                  MonetaryAmount monthlyIncome) {
-
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.birthDate = birthdate;
-        this.maritalStatus = maritalStatus;
-        this.documentNumber = documentNumber;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
-        this.city = city;
-        this.state = state;
-        this.postalCode = postalCode;
-        this.occupation = occupation;
-        this.monthlyIncome = monthlyIncome;
+        this.clientID = builder.clientID;
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.gender = builder.gender;
+        this.birthDate = builder.birthDate;
+        this.maritalStatus = builder.maritalStatus;
+        this.documentNumber = builder.documentNumber;
+        this.phoneNumber = builder.phoneNumber;
+        this.email = builder.email;
+        this.addressLine1 = builder.addressLine1;
+        this.addressLine2 = builder.addressLine2;
+        this.city = builder.city;
+        this.state = builder.state;
+        this.postalCode = builder.postalCode;
+        this.occupation = builder.occupation;
+        this.monthlyIncome = builder.monthlyIncome;
+        this.createdAt = builder.createdAt;
+        this.updatedAt = builder.updatedAt;
     }
 
-    public Client(int clientID,
-                  String firstName,
-                  String lastName,
-                  Gender gender,
-                  LocalDate birthDate,
-                  MaritalStatus maritalStatus,
-                  String documentNumber,
-                  String phoneNumber,
-                  String email,
-                  String addressLine1,
-                  String addressLine2,
-                  String city,
-                  String state,
-                  String postalCode,
-                  String occupation,
-                  MonetaryAmount monthlyIncome,
-                  LocalDateTime createdAt,
-                  LocalDateTime updatedAt,
-                  Account account,
-                  User user) {
+    public static Builder builder() {
 
-        this.clientID = clientID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.birthDate = birthDate;
-        this.maritalStatus = maritalStatus;
-        this.documentNumber = documentNumber;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
-        this.city = city;
-        this.state = state;
-        this.postalCode = postalCode;
-        this.occupation = occupation;
-        this.monthlyIncome = monthlyIncome;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.account = account;
-        this.user = user;
+        return new Builder();
+    }
+
+    public static class Builder {
+
+        private int clientID;
+
+        private String firstName;
+        private String lastName;
+        private Gender gender;
+        private LocalDate birthDate;
+        private MaritalStatus maritalStatus;
+
+        private String documentNumber;
+        private String phoneNumber;
+        private String email;
+
+        private String addressLine1;
+        private String addressLine2;
+        private String city;
+        private String state;
+        private String postalCode;
+
+        private String occupation;
+        private MonetaryAmount monthlyIncome;
+
+        private LocalDateTime createdAt;
+        private LocalDateTime updatedAt;
+
+        public Builder clientID(int clientID) {
+
+            this.clientID = clientID;
+            return this;
+        }
+
+        public Builder firstName(String firstName) {
+
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder gender(Gender gender) {
+
+            this.gender = gender;
+            return this;
+        }
+
+        public Builder birthDate(LocalDate birthDate) {
+
+            this.birthDate = birthDate;
+            return this;
+        }
+
+        public Builder maritalStatus(MaritalStatus maritalStatus) {
+
+            this.maritalStatus = maritalStatus;
+            return this;
+        }
+
+        public Builder documentNumber(String documentNumber) {
+
+            this.documentNumber = documentNumber;
+            return this;
+        }
+
+        public Builder phoneNumber(String phoneNumber) {
+
+            this.phoneNumber = phoneNumber;
+            return this;
+        }
+
+        public Builder email(String email) {
+
+            this.email = email;
+            return this;
+        }
+
+        public Builder addressLine1(String addressLine1) {
+
+            this.addressLine1 = addressLine1;
+            return this;
+        }
+
+        public Builder addressLine2(String addressLine2) {
+
+            this.addressLine2 = addressLine2;
+            return this;
+        }
+
+        public Builder city(String city) {
+
+            this.city = city;
+            return this;
+        }
+
+        public Builder state(String state) {
+
+            this.state = state;
+            return this;
+        }
+
+        public Builder postalCode(String postalCode) {
+
+            this.postalCode = postalCode;
+            return this;
+        }
+
+        public Builder occupation(String occupation) {
+
+            this.occupation = occupation;
+            return this;
+        }
+
+        public Builder monthlyIncome(MonetaryAmount monthlyIncome) {
+
+            this.monthlyIncome = monthlyIncome;
+            return this;
+        }
+
+        public Builder createdAt(LocalDateTime createdAt) {
+
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder updatedAt(LocalDateTime updatedAt) {
+
+            this.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Client build() {
+            return new Client(this);
+        }
     }
 
     public int getClientID() {
@@ -197,17 +284,6 @@ public class Client {
         return monthlyIncome;
     }
 
-    public String getFormattedMonthlyIncome() {
-
-        MonetaryAmountFormat formatter = MonetaryFormats.getAmountFormat(
-                AmountFormatQueryBuilder.of(Locale.US)
-                        .set(CurrencyStyle.SYMBOL)
-                        .build()
-        );
-
-        return formatter.format(monthlyIncome);
-    }
-
     public LocalDateTime getCreatedAt() {
 
         return createdAt;
@@ -216,15 +292,5 @@ public class Client {
     public LocalDateTime getUpdatedAt() {
 
         return updatedAt;
-    }
-
-    public Account getAccount() {
-
-        return account;
-    }
-
-    public User getUser() {
-
-        return user;
     }
 }
