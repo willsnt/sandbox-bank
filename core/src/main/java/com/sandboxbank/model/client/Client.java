@@ -72,8 +72,6 @@ public class Client {
         this.postalCode = postalCode;
         this.occupation = occupation;
         this.monthlyIncome = monthlyIncome;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
     }
 
     public Client(int clientID,
