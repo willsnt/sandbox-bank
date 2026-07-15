@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 public class ClientRepository {
 
@@ -138,6 +139,36 @@ public class ClientRepository {
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
                 pstmt.setBigDecimal(1, newValue.getNumber().numberValue(BigDecimal.class));
+                pstmt.setInt(2, clientID);
+
+                pstmt.executeUpdate();
+
+                connection.commit();
+                logger.debug("Client updated successfully: clientID={}, columnName={}, newValue={}", clientID, columnName, newValue);
+            } catch (SQLException e) {
+
+                connection.rollback();
+                logger.error("Failed to update client: clientID={}, columnName={}, newValue={}", clientID, columnName, newValue, e);
+                throw new RuntimeException(e);
+            }
+        } catch (RuntimeException e) {
+
+            logger.error("Unexpected error occurred while updating client: clientID={}, columnName={}, newValue={}", clientID, columnName, newValue, e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void update(String columnName, LocalDateTime newValue, int clientID) throws SQLException {
+
+        String sql = "UPDATE clients SET " + columnName + " = ? WHERE client_id = ?";
+
+        try {
+
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+                pstmt.setTimestamp(1, java.sql.Timestamp.valueOf(newValue));
                 pstmt.setInt(2, clientID);
 
                 pstmt.executeUpdate();
