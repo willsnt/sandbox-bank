@@ -20,12 +20,6 @@ public class User {
 
         this.username = username;
         this.passwordHash = passwordHash;
-        this.status = UserStatus.ACTIVE;
-        this.lastLogin = null;
-        this.loginAttempts = 0;
-        this.lockedUntil = null;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
     }
 
     public User(Long userID, String username, String passwordHash, UserStatus status, LocalDateTime lastLogin, int loginAttempts, LocalDateTime lockedUntil, LocalDateTime createdAt, LocalDateTime updatedAt) {
