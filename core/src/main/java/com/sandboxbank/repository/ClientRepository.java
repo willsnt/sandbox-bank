@@ -33,9 +33,9 @@ public class ClientRepository {
 
                 pstmt.setString(1, client.getFirstName());
                 pstmt.setString(2, client.getLastName());
-                pstmt.setString(3, client.getGender().getDescription());
+                pstmt.setString(3, client.getGender().name());
                 pstmt.setDate(4, java.sql.Date.valueOf(client.getBirthDate()));
-                pstmt.setString(5, client.getMaritalStatus().getDescription());
+                pstmt.setString(5, client.getMaritalStatus().name());
                 pstmt.setString(6, client.getDocumentNumber());
                 pstmt.setString(7, client.getPhoneNumber());
                 pstmt.setString(8, client.getEmail());
