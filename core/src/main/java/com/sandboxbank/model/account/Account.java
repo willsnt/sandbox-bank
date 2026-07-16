@@ -1,15 +1,7 @@
 package com.sandboxbank.model.account;
 
-
-import org.javamoney.moneta.Money;
-import org.javamoney.moneta.format.CurrencyStyle;
-
 import javax.money.MonetaryAmount;
-import javax.money.format.AmountFormatQueryBuilder;
-import javax.money.format.MonetaryAmountFormat;
-import javax.money.format.MonetaryFormats;
 import java.time.LocalDateTime;
-import java.util.Locale;
 
 public class Account {
 
@@ -17,34 +9,43 @@ public class Account {
     private Long accountNumber;
     private AccountType type;
     private AccountStatus status;
+
     private String pinHash;
 
     private MonetaryAmount balance;
 
+    private LocalDateTime lastAccess;
+    private int pinAttempts;
+    private LocalDateTime lastPinAttempt;
+    private LocalDateTime lockedUntil;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Account(AccountType type, String pinHash) {
+    private final Long clientID;
+
+    public Account(AccountType type, String pinHash, Long clientID) {
 
         this.type = type;
-        this.status = AccountStatus.ACTIVE;
         this.pinHash = pinHash;
-        this.balance = Money.of(0, "USD");
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
+        this.clientID = clientID;
     }
 
-
-    public Account(Long accountID, Long accountNumber, AccountType type, AccountStatus status, String pinHash, MonetaryAmount balance, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Account(Long accountID, Long accountNumber, AccountType type, AccountStatus status, LocalDateTime lastAccess, String pinHash, int pinAttempts, LocalDateTime lastPinAttempt, MonetaryAmount balance, LocalDateTime lockedUntil, LocalDateTime createdAt, LocalDateTime updatedAt, Long clientID) {
 
         this.accountID = accountID;
         this.accountNumber = accountNumber;
         this.type = type;
         this.status = status;
+        this.lastAccess = lastAccess;
         this.pinHash = pinHash;
+        this.pinAttempts = pinAttempts;
+        this.lastPinAttempt = lastPinAttempt;
         this.balance = balance;
+        this.lockedUntil = lockedUntil;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.clientID = clientID;
     }
 
     public Long getAccountID() {
@@ -52,19 +53,9 @@ public class Account {
         return accountID;
     }
 
-    public void setAccountID(Long accountID) {
-
-        this.accountID = accountID;
-    }
-
     public Long getAccountNumber() {
 
         return accountNumber;
-    }
-
-    public void setAccountNumber(Long accountNumber) {
-
-        this.accountNumber = accountNumber;
     }
 
     public AccountType getType() {
@@ -72,19 +63,14 @@ public class Account {
         return type;
     }
 
-    public void setType(AccountType type) {
-
-        this.type = type;
-    }
-
     public AccountStatus getStatus() {
 
         return status;
     }
 
-    public void setStatus(AccountStatus status) {
+    public LocalDateTime getLastAccess() {
 
-        this.status = status;
+        return lastAccess;
     }
 
     public String getPinHash() {
@@ -92,9 +78,14 @@ public class Account {
         return pinHash;
     }
 
-    public void setPinHash(String pinHash) {
+    public int getPinAttempts() {
 
-        this.pinHash = pinHash;
+        return pinAttempts;
+    }
+
+    public LocalDateTime getLastPinAttempt() {
+
+        return lastPinAttempt;
     }
 
     public MonetaryAmount getBalance() {
@@ -102,20 +93,9 @@ public class Account {
         return balance;
     }
 
-    public void setBalance(MonetaryAmount balance) {
+    public LocalDateTime getLockedUntil() {
 
-        this.balance = balance;
-    }
-
-    public String getBalanceFormatted() {
-
-        MonetaryAmountFormat formatter = MonetaryFormats.getAmountFormat(
-                AmountFormatQueryBuilder.of(Locale.US)
-                        .set(CurrencyStyle.SYMBOL)
-                        .build()
-        );
-
-        return formatter.format(balance);
+        return lockedUntil;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -123,18 +103,13 @@ public class Account {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-
-        this.createdAt = createdAt;
-    }
-
     public LocalDateTime getUpdatedAt() {
 
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public Long getClientID() {
 
-        this.updatedAt = updatedAt;
+        return clientID;
     }
 }

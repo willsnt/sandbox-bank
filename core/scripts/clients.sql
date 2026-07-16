@@ -15,6 +15,11 @@ CREATE TABLE clients (
     postal_code VARCHAR(20) NOT NULL,
     occupation VARCHAR(100) NOT NULL,
     monthly_income NUMERIC(15,2) NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
 );
+
+create trigger trg_client_updated_at before
+    update
+    on
+        public.clients for each row execute function set_updated_at();
