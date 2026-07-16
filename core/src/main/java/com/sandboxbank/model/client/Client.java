@@ -1,20 +1,12 @@
 package com.sandboxbank.model.client;
 
-import com.sandboxbank.model.account.Account;
-import com.sandboxbank.model.user.User;
-import org.javamoney.moneta.format.CurrencyStyle;
-
 import javax.money.MonetaryAmount;
-import javax.money.format.AmountFormatQueryBuilder;
-import javax.money.format.MonetaryAmountFormat;
-import javax.money.format.MonetaryFormats;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Locale;
 
 public class Client {
 
-    private int clientID;
+    private Long clientID;
 
     private String firstName;
     private String lastName;
@@ -67,7 +59,7 @@ public class Client {
 
     public static class Builder {
 
-        private int clientID;
+        private Long clientID;
 
         private String firstName;
         private String lastName;
@@ -91,7 +83,7 @@ public class Client {
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
 
-        public Builder clientID(int clientID) {
+        public Builder clientID(Long clientID) {
 
             this.clientID = clientID;
             return this;
@@ -204,7 +196,7 @@ public class Client {
         }
     }
 
-    public int getClientID() {
+    public Long getClientID() {
 
         return clientID;
     }
