@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class User {
 
     private Long userID;
-    private String username;
+    private final String username;
     private String passwordHash;
     private UserStatus status;
 
@@ -16,13 +16,16 @@ public class User {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public User(String username, String passwordHash) {
+    private final Long clientID;
+
+    public User(String username, String passwordHash, Long clientID) {
 
         this.username = username;
         this.passwordHash = passwordHash;
+        this.clientID = clientID;
     }
 
-    public User(Long userID, String username, String passwordHash, UserStatus status, LocalDateTime lastLogin, int loginAttempts, LocalDateTime lockedUntil, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(Long userID, String username, String passwordHash, UserStatus status, LocalDateTime lastLogin, int loginAttempts, LocalDateTime lockedUntil, LocalDateTime createdAt, LocalDateTime updatedAt, Long clientID) {
 
         this.userID = userID;
         this.username = username;
@@ -33,6 +36,7 @@ public class User {
         this.lockedUntil = lockedUntil;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.clientID = clientID;
     }
 
     public Long getUserID() {
@@ -40,19 +44,9 @@ public class User {
         return userID;
     }
 
-    public void setUserID(Long userID) {
-
-        this.userID = userID;
-    }
-
     public String getUsername() {
 
         return username;
-    }
-
-    public void setUsername(String username) {
-
-        this.username = username;
     }
 
     public String getPasswordHash() {
@@ -60,19 +54,9 @@ public class User {
         return passwordHash;
     }
 
-    public void setPasswordHash(String passwordHash) {
-
-        this.passwordHash = passwordHash;
-    }
-
     public UserStatus getStatus() {
 
         return status;
-    }
-
-    public void setStatus(UserStatus status) {
-
-        this.status = status;
     }
 
     public LocalDateTime getLastLogin() {
@@ -80,19 +64,9 @@ public class User {
         return lastLogin;
     }
 
-    public void setLastLogin(LocalDateTime lastLogin) {
-
-        this.lastLogin = lastLogin;
-    }
-
     public int getLoginAttempts() {
 
         return loginAttempts;
-    }
-
-    public void setLoginAttempts(int loginAttempts) {
-
-        this.loginAttempts = loginAttempts;
     }
 
     public LocalDateTime getLockedUntil() {
@@ -100,19 +74,9 @@ public class User {
         return lockedUntil;
     }
 
-    public void setLockedUntil(LocalDateTime lockedUntil) {
-
-        this.lockedUntil = lockedUntil;
-    }
-
     public LocalDateTime getCreatedAt() {
 
         return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-
-        this.createdAt = createdAt;
     }
 
     public LocalDateTime getUpdatedAt() {
@@ -120,8 +84,8 @@ public class User {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
+    public Long getClientID() {
 
-        this.updatedAt = updatedAt;
+        return clientID;
     }
 }
